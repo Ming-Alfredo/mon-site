@@ -2,49 +2,51 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Portail [Complexe Scolaire Lestonnac Mobokoli]</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portail - Complexe Scolaire Lestonnac Mobokoli</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   <header>
-    <h2>[Complexe Scolaire Lestonnac Mobokoli]</h2>
-    <a href="#">S'identifier (bientôt disponible)</a>
+
+  <header>
+    <h2>Complexe Scolaire Lestonnac Mobokoli</h2>
+    <a class="bouton-contour" href="#">S'identifier (bientôt)</a>
   </header>
+
   <main>
     <h1>Portail scolaire</h1>
-    <p>Maternelle, Primaire et Humanités</p>
+    <p class="sous-titre">Maternelle, Primaire et Humanités</p>
 
-    <section>
-      <h2>Inscriptions</h2>
-
-      <article>
+    <h2 class="titre-section">Inscriptions</h2>
+    <section class="cartes">
+      <article class="carte">
+        <span class="badge ouvert">Ouverte · 2026-2027</span>
         <h3>Inscription</h3>
-        <p>Statut : ouverte pour l'année 2026-2027</p>
         <p>Soumettez votre demande d'inscription en ligne.</p>
-        <a href="#">S'inscrire en ligne</a>
+        <a class="bouton" href="#">S'inscrire en ligne</a>
       </article>
 
-      <article>
+      <article class="carte">
+        <span class="badge ferme">Fermée</span>
         <h3>Réinscription</h3>
-        <p>Statut : fermée</p>
         <p>Réinscrivez votre enfant pour la nouvelle année.</p>
-        <p>Non disponible pour le moment.</p>
+        <span class="bouton desactive">Non disponible</span>
       </article>
     </section>
 
-    <section>
-      <h2>Services administratifs et examens</h2>
-
-      <article>
+    <h2 class="titre-section">Services administratifs et examens</h2>
+    <section class="cartes">
+      <article class="carte">
         <h3>Fiche d'inscription</h3>
         <p>Téléchargez la fiche de votre enfant pour la session en cours.</p>
       </article>
 
-      <article>
+      <article class="carte">
         <h3>Résultats et notes</h3>
         <p>Consultez les résultats de la session en cours.</p>
       </article>
 
-      <article>
+      <article class="carte">
         <h3>Documents</h3>
         <p>Commandez des documents scolaires en ligne.</p>
       </article>
