@@ -413,4 +413,55 @@ th {
 
 [hidden] {
   display: none !important;
+}@media (max-width: 700px) {
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 16px;
+  }
+
+  header h2 {
+    margin-bottom: 8px;
+  }
+
+  nav a {
+    margin-left: 0;
+    margin-right: 16px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+  }
+
+  main {
+    padding: 16px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  .formulaire {
+    padding: 16px;
+  }
+
+  .formulaire.etroit {
+    margin: 20px auto;
+  }
+
+  .formulaire .actions .bouton,
+  .formulaire .actions .bouton-contour {
+    display: block;
+    width: 100%;
+    margin: 0 0 10px 0;
+    text-align: center;
+  }
+}header h2 {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 60px;
+  width: auto;
+  margin-right: 12px;
 }
