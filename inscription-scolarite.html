@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inscription : scolarité - Complexe Scolaire InspiDigit</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h2>Complexe Scolaire InspiDigit</h2>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+      <a class="bouton-contour" href="connexion.html">S'identifier</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Inscription en ligne</h1>
+    <p class="sous-titre">Année scolaire 2026-2027</p>
+
+    <ol class="etapes">
+      <li>1. Élève</li>
+      <li class="actuelle">2. Scolarité</li>
+      <li>3. Parent</li>
+      <li>4. Contact</li>
+    </ol>
+
+    <p class="avis">Maquette : n'entrez aucune vraie information. Rien n'est envoyé.</p>
+
+    <form id="formulaire" class="formulaire" onsubmit="event.preventDefault(); suivant(this, 'inscription-parent.html');">
+
+      <h2 class="titre-section">Scolarité</h2>
+
+      <label for="niveau">Niveau souhaité</label>
+      <select id="niveau" name="niveau" required>
+        <option value="">-- Choisir --</option>
+        <option>Maternelle</option>
+        <option>Primaire</option>
+        <option>Humanités</option>
+      </select>
+
+      <div id="groupe-maternelle" hidden>
+        <label for="classe-maternelle">Classe souhaitée (maternelle)</label>
+        <select id="classe-maternelle" name="classe-maternelle">
+          <option value="">-- Choisir --</option>
+          <option>1re maternelle</option>
+          <option>2e maternelle</option>
+          <option>3e maternelle</option>
+        </select>
+      </div>
+
+      <div id="groupe-primaire" hidden>
+        <label for="classe-primaire">Classe souhaitée (primaire)</label>
+        <select id="classe-primaire" name="classe-primaire">
+          <option value="">-- Choisir --</option>
+          <option>1re primaire</option>
+          <option>2e primaire</option>
+          <option>3e primaire</option>
+          <option>4e primaire</option>
+          <option>5e primaire</option>
+          <option>6e primaire</option>
+        </select>
+      </div>
+
+      <div id="groupe-humanites" hidden>
+        <label for="classe-humanites">Classe souhaitée (humanités)</label>
+        <select id="classe-humanites" name="classe-humanites">
+          <option value="">-- Choisir --</option>
+          <option>1re humanités</option>
+          <option>2e humanités</option>
+          <option>3e humanités</option>
+          <option>4e humanités</option>
+        </select>
+
+        <label for="section-humanites">Section</label>
+        <select id="section-humanites" name="section-humanites">
+          <option value="">-- Choisir --</option>
+          <option>Pédagogique</option>
+          <option>Scientifique</option>
+          <option>Littéraire</option>
+          <option>Commerciale et administrative</option>
+          <option>Technique</option>
+        </select>
+
+        <label for="option-humanites">Option</label>
+        <select id="option-humanites" name="option-humanites">
+          <option value="">-- Choisir d'abord une section --</option>
+        </select>
+      </div>
+
+      <label for="ecole-precedente">École précédente</label>
+      <input type="text" id="ecole-precedente" name="ecole-precedente">
+
+      <label for="derniere-classe">Dernière classe fréquentée</label>
+      <input type="text" id="derniere-classe" name="derniere-classe">
+
+      <div class="actions">
+        <a class="bouton-contour" href="inscription.html">Précédent</a>
+        <button class="bouton" type="submit">Suivant</button>
+      </div>
+
+    </form>
+  </main>
+
+  <script src="inscription.js"></script>
+  <script>
+    var formulaire = document.getElementById("formulaire");
+    var niveau = document.getElementById("niveau");
+    var section = document.getElementById("section-humanites");
+    var optionHum = document.getElementById("option-humanites");
+
+    var groupes = {
+      "Maternelle": document.getElementById("groupe-maternelle"),
+      "Primaire": document.getElementById("groupe-primaire"),
+      "Humanités": document.getElementById("groupe-humanites")
+    };
+
+    var optionsParSection = {
+      "Pédagogique": ["Pédagogie générale"],
+      "Scientifique": ["Math-Physique", "Biochimie"],
+      "Littéraire": ["Latin-Philosophie"],
+      "Commerciale et administrative": ["Commerciale et gestion", "Secrétariat-administration"],
+      "Technique": ["Électricité", "Mécanique générale", "Informatique", "Coupe et couture"]
+    };
+
+    function afficherGroupe() {
+      for (var nom in groupes) {
+        var groupe = groupes[nom];
+        var visible = (nom === niveau.value);
+        groupe.hidden = !visible;
+
+        var champs = groupe.getElementsByTagName("select");
+        for (var i = 0; i < champs.length; i++) {
+          champs[i].required = visible;
+          if (!visible) {
+            champs[i].value = "";
+          }
+        }
+      }
+    }
+
+    function remplirOptions(valeurChoisie) {
+      while (optionHum.options.length > 1) {
+        optionHum.remove(1);
+      }
+
+      var liste = optionsParSection[section.value] || [];
+      optionHum.options[0].text = liste.length ? "-- Choisir --" : "-- Choisir d'abord une section --";
+
+      for (var i = 0; i < liste.length; i++) {
+        var o = document.createElement("option");
+        o.text = liste[i];
+        optionHum.appendChild(o);
+      }
+
+      if (valeurChoisie) {
+        optionHum.value = valeurChoisie;
+      }
+    }
+
+    var sauvegarde = lireDonnees();
+    restaurer(formulaire);
+    afficherGroupe();
+    remplirOptions(sauvegarde["option-humanites"]);
+
+    niveau.addEventListener("change", function () {
+      afficherGroupe();
+      remplirOptions();
+    });
+    section.addEventListener("change", function () {
+      remplirOptions();
+    });
+  </script>
+
+</body>
+</html>

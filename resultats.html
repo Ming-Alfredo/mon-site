@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Résultats et notes - Complexe Scolaire InspiDigit</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h2>Complexe Scolaire InspiDigit</h2>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+      <a class="bouton-contour" href="connexion.html">S'identifier</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Résultats et notes</h1>
+    <p class="sous-titre">Consultation avec le matricule de l'élève</p>
+    <p class="avis">Maquette : un seul élève fictif existe. Essayez le matricule DEMO-0001 avec le code 1234.</p>
+
+    <form id="form-resultats" class="formulaire etroit" onsubmit="event.preventDefault(); consulter();">
+      <label for="matricule">Matricule de l'élève</label>
+      <input type="text" id="matricule" required>
+
+      <label for="code">Code d'accès</label>
+      <input type="password" id="code" required>
+
+      <p id="erreur" class="avis" hidden>Matricule ou code incorrect.</p>
+
+      <button class="bouton" type="submit">Consulter les résultats</button>
+    </form>
+
+    <section id="zone-resultats" hidden>
+      <h2 id="nom-eleve"></h2>
+      <p id="classe-eleve" class="sous-titre"></p>
+
+      <div class="tableau-conteneur">
+        <table>
+          <thead>
+            <tr>
+              <th>Matière</th>
+              <th>Note</th>
+              <th>Sur</th>
+              <th>Appréciation</th>
+            </tr>
+          </thead>
+          <tbody id="corps"></tbody>
+        </table>
+      </div>
+
+      <p><button class="bouton" type="button" onclick="quitter()">Quitter la consultation</button></p>
+    </section>
+  </main>
+
+  <script>
+    var ELEVES = {
+      "DEMO-0001": {
+        code: "1234",
+        nom: "Élève fictif",
+        classe: "3e primaire",
+        notes: [
+          ["Français", 14, 20, "Bien"],
+          ["Mathématiques", 12, 20, "Assez bien"],
+          ["Sciences", 16, 20, "Très bien"],
+          ["Histoire", 11, 20, "Passable"]
+        ]
+      }
+    };
+
+    function consulter() {
+      var matricule = document.getElementById("matricule").value.trim().toUpperCase();
+      var code = document.getElementById("code").value;
+      var eleve = ELEVES[matricule];
+
+      if (!eleve || eleve.code !== code) {
+        document.getElementById("erreur").hidden = false;
+        return;
+      }
+
+      document.getElementById("nom-eleve").textContent = eleve.nom + " (" + matricule + ")";
+      document.getElementById("classe-eleve").textContent = eleve.classe;
+
+      var corps = document.getElementById("corps");
+      corps.innerHTML = "";
+      for (var i = 0; i < eleve.notes.length; i++) {
+        var tr = document.createElement("tr");
+        for (var j = 0; j < eleve.notes[i].length; j++) {
+          var td = document.createElement("td");
+          td.textContent = eleve.notes[i][j];
+          tr.appendChild(td);
+        }
+        corps.appendChild(tr);
+      }
+
+      document.getElementById("form-resultats").hidden = true;
+      document.getElementById("zone-resultats").hidden = false;
+    }
+
+    function quitter() {
+      document.getElementById("form-resultats").reset();
+      document.getElementById("erreur").hidden = true;
+      document.getElementById("zone-resultats").hidden = true;
+      document.getElementById("form-resultats").hidden = false;
+    }
+  </script>
+
+</body>
+</html>

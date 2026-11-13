@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inscription : parent - Complexe Scolaire InspiDigit</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h2>Complexe Scolaire InspiDigit</h2>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+      <a class="bouton-contour" href="connexion.html">S'identifier</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Inscription en ligne</h1>
+    <p class="sous-titre">Année scolaire 2026-2027</p>
+
+    <ol class="etapes">
+      <li>1. Élève</li>
+      <li>2. Scolarité</li>
+      <li class="actuelle">3. Parent</li>
+      <li>4. Contact</li>
+    </ol>
+
+    <p class="avis">Maquette : n'entrez aucune vraie information. Rien n'est envoyé.</p>
+
+    <form id="formulaire" class="formulaire" onsubmit="event.preventDefault(); suivant(this, 'inscription-urgence.html');">
+
+      <h2 class="titre-section">Le parent ou tuteur</h2>
+
+      <label for="parent">Nom complet</label>
+      <input type="text" id="parent" name="parent" required>
+
+      <label for="lien">Lien avec l'élève</label>
+      <select id="lien" name="lien" required>
+        <option value="">-- Choisir --</option>
+        <option>Père</option>
+        <option>Mère</option>
+        <option>Tuteur ou tutrice</option>
+        <option>Autre</option>
+      </select>
+
+      <label for="profession">Profession</label>
+      <input type="text" id="profession" name="profession">
+
+      <label for="telephone">Téléphone</label>
+      <input type="tel" id="telephone" name="telephone" required>
+
+      <label for="email">Adresse e-mail</label>
+      <input type="email" id="email" name="email">
+
+      <label for="adresse">Adresse de résidence</label>
+      <textarea id="adresse" name="adresse" rows="3"></textarea>
+
+      <div class="actions">
+        <a class="bouton-contour" href="inscription-scolarite.html">Précédent</a>
+        <button class="bouton" type="submit">Suivant</button>
+      </div>
+
+    </form>
+  </main>
+
+  <script src="inscription.js"></script>
+  <script>
+    restaurer(document.getElementById("formulaire"));
+  </script>
+
+</body>
+</html>

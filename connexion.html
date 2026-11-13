@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connexion - Complexe Scolaire InspiDigit</title>
+  <style>
+    /* Reset & Styles généraux */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f4f7f9;
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Barre de Navigation Header */
+    header {
+      background-color: #ffffff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #0b3c5d;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem; /* Espacement parfait entre les liens */
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #555;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: #1d70b8;
+    }
+
+    .btn-outline {
+      border: 1px solid #ccc;
+      padding: 0.4rem 1rem;
+      border-radius: 6px;
+      color: #333;
+    }
+
+    .btn-outline:hover {
+      border-color: #1d70b8;
+      color: #1d70b8;
+    }
+
+    /* Zone de Connexion Centrée */
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .login-card {
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      width: 100%;
+      max-width: 440px;
+      padding: 2.5rem;
+    }
+
+    .login-card h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #1a202c;
+      margin-bottom: 1.25rem;
+    }
+
+    /* Alerte Maquette */
+    .alert-banner {
+      background-color: #fffbeb;
+      border: 1px solid #fef08a;
+      color: #854d0e;
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Formulaire */
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+      color: #2d3748;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.65rem 0.85rem;
+      border: 1px solid #cbd5e0;
+      border-radius: 6px;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus {
+      border-color: #1d70b8;
+    }
+
+    .btn-primary {
+      width: auto;
+      padding: 0.65rem 1.4rem;
+      background-color: #1d70b8;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .btn-primary:hover {
+      background-color: #15558d;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand-title">Complexe Scolaire InspiDigit</div>
+    <nav>
+      <a href="#">Accueil</a>
+      <a href="#">À propos</a>
+      <a href="#">Contact</a>
+      <a href="#" class="btn-outline">S'identifier</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="login-card">
+      <h1>Connexion</h1>
+
+      <div class="alert-banner">
+        Maquette : ne saisissez aucun vrai mot de passe.
+      </div>
+
+      <form action="#" method="POST">
+        <div class="form-group">
+          <label for="username">Identifiant</label>
+          <input type="text" id="username" name="username" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Mot de passe</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+
+        <button type="submit" class="btn-primary">Se connecter</button>
+      </form>
+    </div>
+  </main>
+
+</body>
+</html>

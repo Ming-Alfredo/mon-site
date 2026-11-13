@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact - Complexe Scolaire InspiDigit</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h2>Complexe Scolaire InspiDigit</h2>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+      <a class="bouton-contour" href="connexion.html">S'identifier</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Contact</h1>
+
+    <article class="carte large">
+      <h3>Coordonnées de l'école</h3>
+      <ul>
+        <li>Adresse : [à compléter]</li>
+        <li>Téléphone : [numéro de l'école]</li>
+        <li>E-mail : [adresse de l'école]</li>
+        <li>Horaires : [à compléter]</li>
+      </ul>
+    </article>
+
+    <form class="formulaire" onsubmit="event.preventDefault(); alert('Maquette : rien n\'a été envoyé.');">
+      <h2 class="titre-section">Nous écrire</h2>
+
+      <label for="nom">Votre nom</label>
+      <input type="text" id="nom" name="nom" required>
+
+      <label for="email">Votre e-mail</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button class="bouton" type="submit">Envoyer</button>
+    </form>
+  </main>
+
+</body>
+</html>

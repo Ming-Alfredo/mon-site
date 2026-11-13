@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inscription : contact - Complexe Scolaire InspiDigit</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h2>Complexe Scolaire InspiDigit</h2>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+      <a class="bouton-contour" href="connexion.html">S'identifier</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Inscription en ligne</h1>
+    <p class="sous-titre">Année scolaire 2026-2027</p>
+
+    <ol class="etapes">
+      <li>1. Élève</li>
+      <li>2. Scolarité</li>
+      <li>3. Parent</li>
+      <li class="actuelle">4. Contact</li>
+    </ol>
+
+    <p class="avis">Maquette : n'entrez aucune vraie information. Rien n'est envoyé.</p>
+
+    <form id="formulaire" class="formulaire" onsubmit="event.preventDefault(); terminer(this);">
+
+      <h2 class="titre-section">Personne à contacter en cas d'urgence</h2>
+
+      <label for="urgence-nom">Nom complet</label>
+      <input type="text" id="urgence-nom" name="urgence-nom" required>
+
+      <label for="urgence-lien">Lien avec l'élève</label>
+      <input type="text" id="urgence-lien" name="urgence-lien" placeholder="Exemple : oncle, voisine">
+
+      <label for="urgence-tel">Téléphone</label>
+      <input type="tel" id="urgence-tel" name="urgence-tel" required>
+
+      <h2 class="titre-section">Informations utiles</h2>
+
+      <label for="sante">Allergies ou problèmes de santé (facultatif)</label>
+      <textarea id="sante" name="sante" rows="3"></textarea>
+
+      <label for="remarques">Remarques (facultatif)</label>
+      <textarea id="remarques" name="remarques" rows="3"></textarea>
+
+      <label class="case">
+        <input type="checkbox" name="accord" required>
+        Je confirme que les informations sont exactes.
+      </label>
+
+      <div class="actions">
+        <a class="bouton-contour" href="inscription-parent.html">Précédent</a>
+        <button class="bouton" type="submit">Terminer l'inscription</button>
+      </div>
+
+    </form>
+
+    <article id="recap" class="carte large" hidden>
+      <h3>Récapitulatif du dossier</h3>
+      <p class="avis">Maquette : ce dossier n'a pas été envoyé et n'est pas enregistré.</p>
+      <ul id="liste-recap"></ul>
+      <button class="bouton" type="button" onclick="recommencer()">Recommencer un nouveau dossier</button>
+    </article>
+  </main>
+
+  <script src="inscription.js"></script>
+  <script>
+    var formulaire = document.getElementById("formulaire");
+    restaurer(formulaire);
+
+    var etiquettes = [
+      ["nom", "Nom de l'élève"],
+      ["postnom", "Postnom"],
+      ["prenom", "Prénom"],
+      ["sexe", "Sexe"],
+      ["naissance", "Date de naissance"],
+      ["lieu", "Lieu de naissance"],
+      ["nationalite", "Nationalité"],
+      ["niveau", "Niveau"],
+      ["classe-maternelle", "Classe (maternelle)"],
+      ["classe-primaire", "Classe (primaire)"],
+      ["classe-humanites", "Classe (humanités)"],
+      ["section-humanites", "Section"],
+      ["option-humanites", "Option"],
+      ["ecole-precedente", "École précédente"],
+      ["derniere-classe", "Dernière classe fréquentée"],
+      ["parent", "Parent ou tuteur"],
+      ["lien", "Lien avec l'élève"],
+      ["profession", "Profession"],
+      ["telephone", "Téléphone"],
+      ["email", "E-mail"],
+      ["adresse", "Adresse"],
+      ["urgence-nom", "Contact d'urgence"],
+      ["urgence-lien", "Lien du contact d'urgence"],
+      ["urgence-tel", "Téléphone d'urgence"],
+      ["sante", "Santé"],
+      ["remarques", "Remarques"]
+    ];
+
+    function terminer(f) {
+      sauvegarder(f);
+      var donnees = lireDonnees();
+      var liste = document.getElementById("liste-recap");
+      liste.innerHTML = "";
+
+      for (var i = 0; i < etiquettes.length; i++) {
+        var cle = etiquettes[i][0];
+        var valeur = donnees[cle];
+        if (!valeur) {
+          continue;
+        }
+        if (cle === "sexe") {
+          valeur = (valeur === "F") ? "Fille" : "Garçon";
+        }
+        var li = document.createElement("li");
+        li.textContent = etiquettes[i][1] + " : " + valeur;
+        liste.appendChild(li);
+      }
+
+      f.hidden = true;
+      document.getElementById("recap").hidden = false;
+      window.scrollTo(0, 0);
+    }
+
+    function recommencer() {
+      try {
+        sessionStorage.removeItem(CLE);
+      } catch (e) {}
+      window.location.href = "inscription.html";
+    }
+  </script>
+
+</body>
+</html>
