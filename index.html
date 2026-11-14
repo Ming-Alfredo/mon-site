@@ -3,67 +3,293 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Portail - Complexe Scolaire InspiDigit</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
 
-  <header>
-     <h2><img class="logo" src="images/logo.jpeg" alt="Logo du Complexe Scolaire InspiDigit"> Complexe Scolaire InspiDigit</h2>
-    <nav>
-      <a href="index.html">Accueil</a>
+  <title>Portail - Complexe Scolaire InspiDigit</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <!-- En-tête -->
+  <header class="entete">
+    <a class="identite" href="index.html">
+      <img
+        class="logo"
+        src="images/logo.jpeg"
+        alt="Logo du Complexe Scolaire InspiDigit"
+      >
+
+      <span>Complexe Scolaire InspiDigit</span>
+    </a>
+
+    <nav class="navigation" aria-label="Navigation principale">
+      <a href="index.html" aria-current="page">Accueil</a>
       <a href="a-propos.html">À propos</a>
       <a href="contact.html">Contact</a>
-      <a class="bouton-contour" href="connexion.html">S'identifier</a>
+
+      <a class="bouton-contour" href="connexion.html">
+        S’identifier
+      </a>
     </nav>
   </header>
 
   <main>
-    <h1>Portail scolaire</h1>
-    <p class="sous-titre">Maternelle, Primaire et Humanités</p>
+    <!-- Carrousel : 11 photos -->
+    <section
+      class="carrousel"
+      aria-label="Bienvenue au Complexe Scolaire InspiDigit"
+      aria-roledescription="carrousel"
+    >
+      <div class="carrousel-photos" aria-hidden="true">
+        <img
+          class="carrousel-photo active"
+          src="images/ecole-1.jpeg"
+          alt=""
+          fetchpriority="high"
+        >
 
-    <h2 class="titre-section">Inscriptions</h2>
-    <section class="cartes">
+        <img
+          class="carrousel-photo"
+          src="images/ecole-2.jpeg"
+          alt=""
+        >
 
-      <article class="carte">
-        <span class="badge ouvert">Ouverte · 2026-2027</span>
-        <h3>Inscription</h3>
-        <p>Soumettez votre demande d'inscription en ligne.</p>
-        <a class="bouton" href="inscription.html">S'inscrire en ligne</a>
-      </article>
+        <img
+          class="carrousel-photo"
+          src="images/ecole-3.jpeg"
+          alt=""
+        >
 
-      <article class="carte">
-        <span class="badge ferme">Fermée</span>
-        <h3>Réinscription</h3>
-        <p>Réinscrivez votre enfant pour la nouvelle année.</p>
-        <span class="bouton desactive">Non disponible</span>
-      </article>
+        <img
+          class="carrousel-photo"
+          src="images/ecole-4.jpeg"
+          alt=""
+        >
 
+        <img
+          class="carrousel-photo"
+          src="images/ecole-5.jpeg"
+          alt=""
+        >
+
+        <img
+          class="carrousel-photo"
+          src="images/ecole-6.jpeg"
+          alt=""
+        >
+
+        <img
+          class="carrousel-photo"
+          src="images/ecole-7.jpeg"
+          alt=""
+        >
+
+        <img
+          class="carrousel-photo"
+          src="images/ecole-8.jpeg"
+          alt=""
+        >
+
+        <img
+          class="carrousel-photo"
+          src="images/ecole-9.jpeg"
+          alt=""
+        >
+
+        <img
+          class="carrousel-photo"
+          src="images/ecole-10.jpeg"
+          alt=""
+        >
+
+        <img
+          class="carrousel-photo"
+          src="images/ecole-11.jpeg"
+          alt=""
+        >
+      </div>
+
+      <!-- Voile sombre pour rendre le texte lisible -->
+      <div class="carrousel-voile" aria-hidden="true"></div>
+
+      <div class="carrousel-contenu">
+        <span class="etiquette-accueil">
+          Complexe Scolaire InspiDigit
+        </span>
+
+        <h1>Grandir, apprendre et construire l’avenir.</h1>
+
+        <p class="carrousel-description">
+          Bienvenue sur notre portail scolaire.
+          Retrouvez les inscriptions et les services de l’école.
+        </p>
+
+        <p class="niveaux">
+          Maternelle <span>•</span>
+          Primaire <span>•</span>
+          Humanités
+        </p>
+
+        <div class="carrousel-actions">
+          <a class="bouton" href="inscription.html">
+            S’inscrire en ligne
+          </a>
+
+          <a
+            class="bouton bouton-transparent"
+            href="a-propos.html"
+          >
+            Découvrir l’école
+          </a>
+        </div>
+      </div>
+
+      <!-- Commandes du carrousel -->
+      <div class="carrousel-commandes">
+        <button
+          class="commande"
+          id="photo-precedente"
+          type="button"
+          aria-label="Afficher la photo précédente"
+        >
+          &#10094;
+        </button>
+
+        <!-- Les points sont créés par script.js -->
+        <div
+          class="carrousel-points"
+          aria-label="Choisir une photo"
+        ></div>
+
+        <button
+          class="commande"
+          id="photo-suivante"
+          type="button"
+          aria-label="Afficher la photo suivante"
+        >
+          &#10095;
+        </button>
+
+        <button
+          class="commande commande-pause"
+          id="carrousel-pause"
+          type="button"
+          aria-label="Mettre le diaporama en pause"
+        >
+          Pause
+        </button>
+      </div>
     </section>
 
-    <h2 class="titre-section">Services administratifs et examens</h2>
-    <section class="cartes">
+    <!-- Portail scolaire -->
+    <div class="conteneur">
+      <div class="introduction-portail">
+        <span class="petit-titre">Vos démarches en ligne</span>
 
-      <article class="carte">
-        <h3>Fiche d'inscription</h3>
-        <p>Téléchargez la fiche de votre enfant pour la session en cours.</p>
-        <a class="bouton" href="fiche.html">Ouvrir</a>
-      </article>
+        <h2>Portail scolaire</h2>
 
-      <article class="carte">
-        <h3>Résultats et notes</h3>
-        <p>Consultez les résultats de la session en cours.</p>
-        <a class="bouton" href="resultats.html">Ouvrir</a>
-      </article>
+        <p>
+          Accédez aux inscriptions et aux services administratifs.
+        </p>
+      </div>
 
-      <article class="carte">
-        <h3>Documents</h3>
-        <p>Commandez des documents scolaires en ligne.</p>
-        <a class="bouton" href="documents.html">Ouvrir</a>
-      </article>
+      <!-- Inscriptions -->
+      <section
+        class="section-services"
+        aria-labelledby="titre-inscriptions"
+      >
+        <h2 class="titre-section" id="titre-inscriptions">
+          Inscriptions
+        </h2>
 
-    </section>
+        <div class="cartes cartes-inscriptions">
+          <article class="carte">
+            <span class="badge ouvert">
+              Ouverte · 2026-2027
+            </span>
+
+            <h3>Inscription</h3>
+
+            <p>
+              Soumettez votre demande d’inscription en ligne.
+            </p>
+
+            <a class="bouton" href="inscription.html">
+              S’inscrire en ligne
+            </a>
+          </article>
+
+          <article class="carte">
+            <span class="badge ferme">Fermée</span>
+
+            <h3>Réinscription</h3>
+
+            <p>
+              Réinscrivez votre enfant pour la nouvelle année.
+            </p>
+
+            <span class="bouton desactive">
+              Non disponible
+            </span>
+          </article>
+        </div>
+      </section>
+
+      <!-- Services administratifs -->
+      <section
+        class="section-services"
+        aria-labelledby="titre-services"
+      >
+        <h2 class="titre-section" id="titre-services">
+          Services administratifs et examens
+        </h2>
+
+        <div class="cartes cartes-services">
+          <article class="carte">
+            <h3>Fiche d’inscription</h3>
+
+            <p>
+              Téléchargez la fiche de votre enfant pour
+              la session en cours.
+            </p>
+
+            <a class="bouton" href="fiche.html">
+              Ouvrir
+            </a>
+          </article>
+
+          <article class="carte">
+            <h3>Résultats et notes</h3>
+
+            <p>
+              Consultez les résultats de la session en cours.
+            </p>
+
+            <a class="bouton" href="resultats.html">
+              Ouvrir
+            </a>
+          </article>
+
+          <article class="carte">
+            <h3>Documents</h3>
+
+            <p>
+              Commandez des documents scolaires en ligne.
+            </p>
+
+            <a class="bouton" href="documents.html">
+              Ouvrir
+            </a>
+          </article>
+        </div>
+      </section>
+    </div>
   </main>
 
+  <footer class="pied-page">
+    <p>Complexe Scolaire InspiDigit</p>
+    <p>Maternelle · Primaire · Humanités</p>
+  </footer>
 </body>
 </html>

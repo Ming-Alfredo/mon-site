@@ -464,4 +464,531 @@ th {
   height: 60px;
   width: auto;
   margin-right: 12px;
+}/* =========================
+   BASE
+========================= */
+
+:root {
+  --bleu: #176bd1;
+  --bleu-fonce: #103d56;
+  --texte: #1e293b;
+  --texte-secondaire: #64748b;
+  --fond: #f4f7fb;
+  --bordure: #e2e8f0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  color: var(--texte);
+  background: var(--fond);
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid #fbbf24;
+  outline-offset: 4px;
+}
+
+/* =========================
+   EN-TÊTE
+========================= */
+
+.entete {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px 5%;
+  background: #fff;
+  border-bottom: 1px solid var(--bordure);
+}
+
+.identite {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--bleu-fonce);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.logo {
+  width: 58px;
+  height: 58px;
+  flex-shrink: 0;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.navigation a {
+  color: var(--texte);
+  font-size: 14px;
+}
+
+.navigation a:hover,
+.navigation a[aria-current="page"] {
+  color: var(--bleu);
+}
+
+.bouton-contour {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border: 1px solid var(--bordure);
+  border-radius: 9px;
+}
+
+/* =========================
+   CARROUSEL
+========================= */
+
+.carrousel {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  min-height: 580px;
+  overflow: hidden;
+  color: #fff;
+  background: var(--bleu-fonce);
+}
+
+.carrousel-photos,
+.carrousel-voile {
+  position: absolute;
+    top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.carrousel-photos {
+  z-index: -2;
+}
+
+.carrousel-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.carrousel-photo.active {
+  opacity: 1;
+}
+
+.carrousel-voile {
+  z-index: -1;
+  background: linear-gradient(
+    90deg,
+    rgba(4, 20, 38, 0.88) 0%,
+    rgba(4, 20, 38, 0.65) 60%,
+    rgba(4, 20, 38, 0.38) 100%
+  );
+}
+
+.carrousel-contenu {
+  width: min(1120px, 90%);
+  margin: 0 auto;
+  padding: 64px 0 130px;
+}
+
+.etiquette-accueil {
+  display: inline-block;
+  padding: 7px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+.carrousel h1 {
+  max-width: 760px;
+  margin: 20px 0;
+  font-size: clamp(34px, 4.5vw, 58px);
+  line-height: 1.15;
+  letter-spacing: -1px;
+}
+
+.carrousel-description {
+  max-width: 580px;
+  margin-bottom: 16px;
+  color: #edf2fa;
+  font-size: 18px;
+}
+
+.niveaux {
+  color: #d9e9ff;
+  font-size: 15px;
+}
+
+.niveaux span {
+  margin: 0 8px;
+  color: #62dce8;
+}
+
+.carrousel-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+/* =========================
+   BOUTONS
+========================= */
+
+.bouton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  padding: 12px 20px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  color: #fff;
+  background: var(--bleu);
+  font-size: 14px;
+  font-weight: 700;
+  transition: background 0.2s, transform 0.2s;
+}
+
+a.bouton:hover {
+  background: #1156ac;
+  transform: translateY(-2px);
+}
+
+.bouton-transparent {
+  border-color: rgba(255, 255, 255, 0.7);
+  background: rgba(0, 0, 0, 0.15);
+}
+
+a.bouton-transparent:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* =========================
+   COMMANDES DU CARROUSEL
+========================= */
+
+.carrousel-commandes {
+  position: absolute;
+  right: 5%;
+  bottom: 24px;
+  left: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.commande {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+}
+
+.commande:hover {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.commande-pause {
+  min-width: 100px;
+  padding: 8px 16px;
+  border-radius: 24px;
+  font-size: 13px;
+}
+
+.carrousel-points {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.point {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.point::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.point.actif::before {
+  width: 20px;
+  border-radius: 8px;
+  background: #fff;
+}
+
+/* =========================
+   PORTAIL ET CARTES
+========================= */
+
+.conteneur {
+  width: min(1120px, 90%);
+  margin: 0 auto;
+  padding: 52px 0 64px;
+}
+
+.introduction-portail {
+  margin-bottom: 36px;
+}
+
+.petit-titre {
+  color: var(--bleu);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+.introduction-portail h2 {
+  margin: 8px 0;
+  color: var(--bleu-fonce);
+  font-size: 32px;
+}
+
+.introduction-portail p {
+  margin: 0;
+  color: var(--texte-secondaire);
+}
+
+.section-services + .section-services {
+  margin-top: 36px;
+}
+
+.titre-section {
+  margin: 0 0 16px;
+  color: #526175;
+  font-size: 14px;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+}
+
+.cartes {
+  display: grid;
+  gap: 22px;
+}
+
+.cartes-inscriptions {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cartes-services {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.carte {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 26px;
+  border: 1px solid var(--bordure);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 5px 20px rgba(15, 23, 42, 0.04);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.carte:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.09);
+}
+
+.carte h3 {
+  margin: 14px 0 8px;
+  font-size: 20px;
+}
+
+.carte p {
+  margin: 0 0 22px;
+  color: var(--texte-secondaire);
+  font-size: 14px;
+}
+
+.carte .bouton {
+  margin-top: auto;
+}
+
+.badge {
+  display: inline-block;
+  padding: 5px 11px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.ouvert {
+  color: #166534;
+  background: #e2f5e9;
+}
+
+.ferme {
+  color: #a4262c;
+  background: #fde8e8;
+}
+
+.desactive {
+  color: #596270;
+  background: #e2e5ea;
+  cursor: not-allowed;
+}
+
+/* =========================
+   PIED DE PAGE
+========================= */
+
+.pied-page {
+  padding: 28px 5%;
+  text-align: center;
+  color: #dce6f2;
+  background: #102d43;
+}
+
+.pied-page p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+/* =========================
+   TABLETTES
+========================= */
+
+@media (max-width: 850px) {
+  .entete {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .navigation {
+    justify-content: center;
+    gap: 18px;
+  }
+
+  .cartes-services {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================
+   TÉLÉPHONES
+========================= */
+
+@media (max-width: 600px) {
+  .identite {
+    font-size: 15px;
+  }
+
+  .logo {
+    width: 46px;
+    height: 46px;
+  }
+
+  .navigation {
+    gap: 12px;
+  }
+
+  .navigation a {
+    font-size: 13px;
+  }
+
+  .carrousel {
+    min-height: 620px;
+  }
+
+  .carrousel-contenu {
+    padding-top: 44px;
+    padding-bottom: 155px;
+  }
+
+  .carrousel-description {
+    font-size: 16px;
+  }
+
+  .carrousel-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .carrousel-commandes {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .carrousel-points {
+    order: -1;
+    flex-basis: 100%;
+  }
+
+  .point {
+    width: 23px;
+  }
+
+  .cartes-inscriptions {
+    grid-template-columns: 1fr;
+  }
+
+  .conteneur {
+    padding-top: 36px;
+  }
+
+  .carte {
+    padding: 22px;
+  }
+}
+
+/* Réduction des animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
 }
